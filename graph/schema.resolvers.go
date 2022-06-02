@@ -5,14 +5,21 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/site-tech/subgraph-three-poc/graph/generated"
 	"github.com/site-tech/subgraph-three-poc/graph/model"
 )
 
 func (r *queryResolver) Me(ctx context.Context) (*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	return &model.User{
+		ID: "1234",
+		Host: &model.EmailHost{
+			ID:   "4567",
+			Name: "Email Host 4567",
+		},
+		Email:    "me@example.com",
+		Username: "Me",
+	}, nil
 }
 
 // Query returns generated.QueryResolver implementation.

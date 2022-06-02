@@ -5,18 +5,28 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/site-tech/subgraph-three-poc/graph/generated"
 	"github.com/site-tech/subgraph-three-poc/graph/model"
 )
 
 func (r *entityResolver) FindEmailHostByID(ctx context.Context, id string) (*model.EmailHost, error) {
-	panic(fmt.Errorf("not implemented"))
+	return &model.EmailHost{
+		ID:   id,
+		Name: "Email Host " + id,
+	}, nil
 }
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	name := "User " + id
+	if id == "1234" {
+		name = "Me"
+	}
+
+	return &model.User{
+		ID:       id,
+		Username: name,
+	}, nil
 }
 
 // Entity returns generated.EntityResolver implementation.
